@@ -1,5 +1,7 @@
 # Leica-TS02-Plus-Transporter
 simple way to Export data from Leica Total Station.
+## Main UI
+![](https://github.com/InoriJam/Leica-TS02-Plus-Transporter/blob/master/preview.png)
 ## Features
 1. Multi formats support
 2. Auto valid COM port detect
