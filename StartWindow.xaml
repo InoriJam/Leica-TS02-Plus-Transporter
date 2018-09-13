@@ -1,0 +1,146 @@
+﻿<DMSkin:DMSkinSimpleWindow
+    x:Class="DMSkin.WPF.Demos.StartWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:DMSkin="clr-namespace:DMSkin.WPF;assembly=DMSkin.WPF"
+    xmlns:controls="clr-namespace:DMSkin.WPF.Controls;assembly=DMSkin.WPF"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewmodels="clr-namespace:DMSkin.WPF.Demos.ViewModels"
+    Title="Leica TS02 Plus Transporter"
+    Width="800"
+    Height="600"
+    MinWidth="360"
+    MinHeight="268"
+    Background="White"
+    DMWindowShadowColor="{Binding DMWindowShadowColor}"
+    DMWindowShadowOpacity="0.8"
+    DMWindowShadowSize="15"
+    FontSize="12"
+    Foreground="White"
+    ResizeMode="CanResizeWithGrip"
+    WindowStartupLocation="CenterScreen"
+    mc:Ignorable="d">
+    <DMSkin:DMSkinSimpleWindow.Resources>
+    </DMSkin:DMSkinSimpleWindow.Resources>
+    <Window.DataContext>
+        <viewmodels:StartWindowViewModel />
+    </Window.DataContext>
+    <Grid>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50" />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Grid Background="#FF1E9FFF">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="79*"/>
+                    <ColumnDefinition Width="714*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock
+                    Margin="15,12,0,12"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Center"
+                    FontSize="20"
+                    Text="Leica TS02 Plus Transporter" Grid.ColumnSpan="2" />
+                <WrapPanel
+                    Height="{Binding DMSystemButtonSize}"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Top"
+                    Orientation="Horizontal" Grid.Column="1">
+                    <controls:DMSystemMinButton
+                        DMSystemButtonForeground="White"
+                        DMSystemButtonHoverForeground="White"
+                        DMSystemButtonSize="50" />
+                    <controls:DMSystemCloseButton
+                        DMSystemButtonForeground="White"
+                        DMSystemButtonHoverForeground="White"
+                        DMSystemButtonSize="50" />
+                </WrapPanel>
+            </Grid>
+            <TabControl
+                Grid.Row="1"
+                Background="Transparent"
+                Style="{StaticResource DMTopTabControl}">
+                <controls:DMTabItem
+                    Height="35"
+                    Header="数据传输"
+                    SelectForeground="White"
+                    SelectedColor="#FF1E9FFF"
+                    TabItemType="Left">
+                    <StackPanel Margin="10" Orientation="Horizontal">
+                        <StackPanel Margin="100,0,0,0" VerticalAlignment="Center">
+                            <GroupBox Header="参数设置" Width="150">
+                                <UniformGrid 
+                                    Height="190"
+                                    Rows="6">
+                                    <Label Content="端口"/>
+                                    <ComboBox x:Name="comboBox1" Height="25">
+                                    </ComboBox>
+                                    <Label Content="波特率"/>
+                                    <ComboBox x:Name="comboBox2" Height="25"/>
+                                    <Label Content="校验位"/>
+                                    <ComboBox x:Name="comboBox3" Height="25"/>
+                                </UniformGrid>
+                            </GroupBox>
+                        </StackPanel>
+                        <StackPanel Margin="100,0,0,0" VerticalAlignment="Center">
+                            <GroupBox Header="文件格式">
+                                <UniformGrid
+                                    Height="160"
+                                    Margin="15"
+                                    Rows="6">
+                                    <controls:DMRadioButton x:Name="radioButton1"
+                                        Content="XML"
+                                        IconColor="#FF1E9FFF"
+                                        />
+                                    <controls:DMRadioButton x:Name="radioButton2"
+                                        Content="DXF"
+                                        IconColor="#FF1E9FFF"
+                                        />
+                                    <controls:DMRadioButton x:Name="radioButton3"
+                                        Content="CASS(dat)"
+                                        IconColor="#FF1E9FFF"
+                                        IsChecked="True" />
+                                    <controls:DMRadioButton x:Name="radioButton4"
+                                        Content="GSI"
+                                        IconColor="#FF1E9FFF"
+                                        />
+                                    <controls:DMRadioButton x:Name="radioButton5"
+                                        Content="SV(CSV)"
+                                        IconColor="#FF1E9FFF"
+                                        />
+                                </UniformGrid>
+                            </GroupBox>
+                        </StackPanel>
+                        <StackPanel/>
+                        <controls:DMButton
+                                    Width="120"
+                                    Height="30"
+                                    Margin="100,0,0,0"
+                                    VerticalAlignment="Center"
+                                    Background="#FF1E9FFF"
+                                    BorderThickness="0"
+                                    Content="选择导出路径并开始"
+                                    CornerRadius="3"
+                                    Foreground="White" Click="DMButton_Click" />
+                    </StackPanel>
+                </controls:DMTabItem>
+                <controls:DMTabItem
+                    Height="35"
+                    Header="关于作者"
+                    SelectForeground="White"
+                    SelectedColor="#FF1E9FFF"
+                    TabItemType="Right">
+                    <Frame NavigationUIVisibility="Hidden" Source="/DMSkin.WPF.Demos;component/Views/PageAbout.xaml" />
+                </controls:DMTabItem>
+            </TabControl>
+        </Grid>
+        <ResizeGrip
+            HorizontalAlignment="Right"
+            VerticalAlignment="Bottom"
+            HorizontalContentAlignment="Stretch"
+            VerticalContentAlignment="Stretch"
+            Visibility="{Binding DMVisibility}" />
+    </Grid>
+</DMSkin:DMSkinSimpleWindow>
